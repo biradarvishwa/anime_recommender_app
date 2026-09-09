@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnimeMatch — Anime Recommendation System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <nav class="navbar">
+    <div class="brand">
+      <span class="brand-mark">✦</span>
+      <span>Anime<span>Match</span></span>
+    </div>
+    <div class="nav-pill">AI Recommendation</div>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">CONTENT-BASED RECOMMENDER</div>
+      <h1>Find your next<br><span>anime obsession.</span></h1>
+      <p class="hero-copy">
+        Pick an anime you love and get recommendations based on genre,
+        rating and community popularity.
+      </p>
+
+      <div class="search-shell">
+        <div class="search-row">
+          <span class="search-icon">⌕</span>
+          <input id="animeInput" type="text" autocomplete="off"
+                 placeholder="Try Naruto, Death Note, Steins;Gate..." />
+          <button id="recommendBtn">Recommend <span>→</span></button>
+        </div>
+        <div id="suggestions" class="suggestions hidden"></div>
+      </div>
+
+      <div class="quick-picks">
+        <span>Popular picks</span>
+        <button data-anime="Naruto">Naruto</button>
+        <button data-anime="Death Note">Death Note</button>
+        <button data-anime="One Piece">One Piece</button>
+        <button data-anime="Dragon Ball">Dragon Ball</button>
+      </div>
+    </section>
+
+    <section id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <span>Finding similar anime...</span>
+    </section>
+
+    <section id="resultsSection" class="results-section hidden">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">YOUR RESULTS</div>
+          <h2>Because you liked <span id="queryTitle"></span></h2>
+        </div>
+        <div class="result-count" id="resultCount"></div>
+      </div>
+      <div id="results" class="grid"></div>
+    </section>
+
+    <section id="errorBox" class="error hidden"></section>
+
+    <section class="how-it-works">
+      <div>
+        <div class="eyebrow">HOW IT WORKS</div>
+        <h2>Simple. Fast. Explainable.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><b>01</b><span>Choose an anime</span><small>from the dataset</small></div>
+        <div class="step"><b>02</b><span>Compare features</span><small>genre + rating + members</small></div>
+        <div class="step"><b>03</b><span>Rank similarities</span><small>using cosine similarity</small></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>AnimeMatch · Built with Flask + scikit-learn</footer>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
